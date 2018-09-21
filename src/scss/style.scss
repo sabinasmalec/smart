@@ -1,0 +1,140 @@
+@import "variables";
+@import "reset";
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  max-width: $page-width;
+  padding: 0 20px;
+  margin: 43px auto;
+  line-height: 1.2;
+}
+
+//checkbox
+.label-checkbox {
+  font-family: arial;
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.checkbox-indicator {
+  position: absolute;
+  top: 3px;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  background: #fff;
+  border: 1px solid $grey-border;
+  border-radius: 3px;
+}
+.label:hover .checkbox ~ .checkbox-indicator,
+.label-checkbox .checkbox:focus ~ .checkbox-indicator {
+  background: #cccccc;
+}
+
+.label-checkbox .checkbox:checked ~ .checkbox-indicator {
+  background: #fff;
+}
+.control:hover input:not([disabled]):checked ~ .checkbox-indicator,
+.label-checkbox .checkbox:checked:focus ~ .checkbox-indicator {
+  background: #fff;
+}
+.label-checkbox .checkbox:disabled ~ .checkbox-indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.checkbox-indicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  display: none;
+}
+.label-checkbox .checkbox:checked ~ .checkbox-indicator:after {
+  display: block;
+}
+.control-checkbox .checkbox-indicator:after {
+  left: 5px;
+  top: 1px;
+  width: 3px;
+  height: 8px;
+  border: solid $theme-color;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.control-checkbox .checkbox:disabled ~ .checkbox-indicator:after {
+  border-color: #7b7b7b;
+}
+
+//pagination
+.pagination {
+  clear: both;
+  float: none;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.pagination-arrow {
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  text-decoration: none;
+  width: 120px;
+  align-items: center;
+  &::before {
+    color: #fff;
+    font-size: 34px;
+    width: 47px;
+    height: 47px;
+    line-height: 47px;
+    display: block;
+    padding: 0 16px;
+    background: $theme-color;
+  }
+  &:hover {
+    color: $grey-border2;
+    &::before {
+      background: $grey-border2;
+    }
+  }
+  &__next {
+    float: right;
+    flex-direction: row-reverse;
+    &::before {
+      margin-right: 0;
+    }
+  }
+  &__prev {
+    &::before {
+      margin-left: 0;
+    }
+  }
+  &--rewerse-color {
+    color: $grey-border2;
+    &::before {
+      background: $grey-border2;
+    }
+    &:hover {
+      color: $theme-color;
+      &::before {
+        background: $theme-color;
+      }
+    }
+  }
+}
